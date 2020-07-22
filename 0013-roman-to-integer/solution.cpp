@@ -28,6 +28,6 @@ constexpr int convert(char c) {
     case 'M':
         return 1000;
     default:
-        throwruntime_error("Unknown Roman character");
+        throw std::runtime_error("Unknown Roman character");
     }
 } 
