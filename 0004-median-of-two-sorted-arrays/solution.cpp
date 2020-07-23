@@ -10,27 +10,27 @@ double findMedianSortedArrays(const std::vector<int>& nums1, const std::vector<i
             return {nums1, nums2};
         }
     }();
-    
+
     auto median = 0.0;
-    
+
     auto len1 = first.size();
     auto len2 = second.size();
-    
+
     auto min_index = 0;
     auto max_index = len1;
-    
+
     auto left  = 0;
     auto right = 0;
-    
+
     while (min_index <= max_index) {
         left  = (min_index + max_index) / 2;
         right = (len1 + len2 + 1) / 2 - left;
-        
+
         if (left < len1 && right > 0 && second[right - 1] > first[left]) {
             min_index = left + 1;
             continue;
-        }            
-        
+        }
+
         if (left > 0 && right < len2 && second[right] < first[left - 1]) {
             max_index = left - 1;
             continue;
@@ -49,7 +49,7 @@ double findMedianSortedArrays(const std::vector<int>& nums1, const std::vector<i
         median = std::max(first[left - 1], second[right - 1]);
         break;
     }
-    
+
     if ((len1 + len2) % 2 == 1) {
         return median;
     }
